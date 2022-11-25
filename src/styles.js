@@ -2,7 +2,7 @@ import  { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-    *, body{
+    *{
         margin: 0;
         padding: 0;
     }
@@ -10,6 +10,7 @@ export default createGlobalStyle`
     body {
         background-color: #22272e;
         color: #FFFFFF;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
 `

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import gitLogo from '../assets/github.png'
 import Input from '../components/Input';
@@ -13,16 +12,15 @@ function App() {
   const [currentRepo, setCurrentRepo] = useState('');
   const [repos, setRepos] = useState([]);
 
-
   const handleSearchRepo = async () => {
+    console.log('entrou')
+    const { data } = await api.get(`users/${currentRepo}`)
 
-    const {data} = await api.get(`repos/${currentRepo}`)
-
-    if(data.id){
+    if (data.id) {
 
       const isExist = repos.find(repo => repo.id === data.id);
 
-      if(!isExist){
+      if (!isExist) {
         setRepos(prev => [...prev, data]);
         setCurrentRepo('')
         return
@@ -36,16 +34,15 @@ function App() {
   const handleRemoveRepo = (id) => {
     console.log('Removendo registro', id);
 
-    // utilizar filter.
   }
 
 
   return (
     <Container>
-      <img src={gitLogo} width={72} height={72} alt="github logo"/>
+      <img src={gitLogo} width={72} height={72} alt="github logo" />
       <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo}/>
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+      <Button onClick={handleSearchRepo} />
+      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo} />)}
     </Container>
   );
 }
