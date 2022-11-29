@@ -15,6 +15,5 @@ export const InputContainer = styled.div`
         color: #FFFFFF;
         outline: none;
         font-size: 20px
-    }
-
+    } 
 `

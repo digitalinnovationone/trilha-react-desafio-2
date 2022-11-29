@@ -6,15 +6,13 @@ export const ItemContainer = styled.div`
     a{
         text-decoration: none;
         color: lightblue;
+        &:hover{
+            text-decoration: underline;
+        }
     }
     h3 {
         font-size: 32px;
         color: #FAFAFA;
-    }
-    p {
-        font-size:16px;
-        color: #FAFAFA60;
-        margin-bottom:20px;
     }
     a.remover {
         color: #FF0000;

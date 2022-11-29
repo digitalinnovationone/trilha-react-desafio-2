@@ -9,42 +9,40 @@ import { Container } from './styles';
 
 function App() {
 
-  const [currentRepo, setCurrentRepo] = useState('');
-  const [repos, setRepos] = useState([]);
+  const [itemAtual, setItemAtual] = useState('');
+  const [lista, setLista] = useState([]);
 
-  const handleSearchRepo = async () => {
-    console.log('entrou')
-    const { data } = await api.get(`users/${currentRepo}`)
+  const buscar = async () => {
+
+    const { data } = await api.get(`users/${itemAtual}`)
 
     if (data.id) {
-
-      const isExist = repos.find(repo => repo.id === data.id);
-
-      if (!isExist) {
-        setRepos(prev => [...prev, data]);
-        setCurrentRepo('')
+      const existe = lista.find(repo => repo.id === data.id);
+      if (!existe) {
+        setLista(prev => [...prev, data]);
+        setItemAtual('')
+        console.log(lista)
         return
+      } else if (existe) {
+        alert('Repositório já adicionado')
+      } else {
+        alert('Repositório não encontrado.')
       }
-
     }
-    alert('Repositório não encontrado')
-
   }
 
-  const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-
+  const removerItem = (id) => {
+    let listaFiltrada = lista.filter((item) => item.id !== id)
+    setLista(listaFiltrada)
   }
-
 
   return (
     <Container>
       <img src={gitLogo} width={72} height={72} alt="github logo" />
-      <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo} />
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo} />)}
+      <Input value={itemAtual} onChange={(e) => setItemAtual(e.target.value)} />
+      <Button onClick={buscar} />
+      {lista.map(item => <ItemRepo removerItem={removerItem} item={item} />)}
     </Container>
-  );
+  )
 }
-
 export default App;
