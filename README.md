@@ -1,4 +1,4 @@
-##Wiki de repositórios do github
+## Wiki de repositórios do github
 
 O projeto que eu 'forkei' tinha alguns pequenos problemas quando eu rodava, tomei a liberdade pra corrigir. Corrigi algumas questões de estilização, mudei o endpoint da requisição da API e adicionei a feature pedida no desafio: remover um repositório da lista utilizando o filter.
 
