@@ -21,6 +21,22 @@ export const ItemContainer = styled.div`
 
     hr {
         color: #FAFAFA60;
-        margin: 20px 0;
+        margin: 15px 0;
+    }
+
+    button {
+        background-color: #FAFAFA;
+        border: 1px solid #FAFAFA;
+        border-radius: 20px;
+
+        height: 30px;
+        width: 10%;
+
+        margin-top: 10px;
+
+        &: hover {
+            background-color: #FAFAFA40;
+            cursor: pointer;
+        }
     }
 `
