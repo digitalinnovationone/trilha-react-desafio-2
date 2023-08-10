@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ItemContainer } from './styles';
 
 function ItemRepo({ repo, handleRemoveRepo }) {

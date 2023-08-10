@@ -22,7 +22,7 @@ function App() {
                     setRepos(prev => [...prev, data]);
                     setCurrentRepo('');
                 } else {
-                    alert('Repositório já se listado!');
+                    alert('Repositório já listado!');
                 }
             }
 
