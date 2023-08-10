@@ -1,24 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const InputContainer = styled.div`
-
-    border: 1px solid #FAFAFA;
-    border-radius: 20px;
-
-    height: 62px;
+export const InputContainer = styled.input`
+    background: transparent;
     width: 80%;
-
-    margin: 20px;
-    
-
-    input {
-        background: transparent;
-        border: 0;
-        width: 90%;
-        height: 62px;
-        padding: 0 20px;
-        color: #FFFFFF;
-        font-size: 20px
-    }
-
-`
+    padding: 20px;
+    color: #ffffff;
+    font-size: 20px;
+    border: 1px solid #fafafa;
+    border-radius: 20px;
+`;
