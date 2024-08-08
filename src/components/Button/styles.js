@@ -11,9 +11,14 @@ export const ButtonContainer = styled.button`
 
     margin: 20px;
 
-    &: hover {
+    &:hover {
         background-color: #FAFAFA40;
         cursor: pointer;
     }
-
+    
+    &:active {
+        background-color: #000;
+        color: #FFF;
+        cursor: pointer;
+    }
 `

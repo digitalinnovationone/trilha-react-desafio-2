@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ButtonContainer } from './styles';
 
 function Button({onClick}) {
