@@ -1,13 +1,11 @@
-import React from 'react'
+import { InputContainer } from "./styles";
 
-import { InputContainer } from './styles';
-
-function Input({value, onChange}) {
+const Input = ({value, onChange}) => {
   return (
     <InputContainer>
-        <input value={value} onChange={onChange}/>
+        <input value={value} onChange={onChange} placeholder="user/repository"/>
     </InputContainer>
   )
 }
 
-export default Input
+export default Input;

@@ -1,51 +1,42 @@
-
 import { useState } from 'react';
-import gitLogo from '../assets/github.png'
-import Input from '../components/Input';
-import Button from '../components/Button';
-import ItemRepo from '../components/ItemRepo';
-import { api } from '../services/api';
-
 import { Container } from './styles';
+import {api} from '../services/api'
+import Button from '../components/Button/Index';
+import gitLogo from '../assets/github.png';
+import Input from '../components/Input/Index';
+import ItemRepo from '../components/ItemRepo/Index';
 
 function App() {
-
   const [currentRepo, setCurrentRepo] = useState('');
   const [repos, setRepos] = useState([]);
 
-
   const handleSearchRepo = async () => {
+    await api.get(`repos/${currentRepo}`)
+    .then(response => {
+        const {data} = response;
 
-    const {data} = await api.get(`repos/${currentRepo}`)
-
-    if(data.id){
-
-      const isExist = repos.find(repo => repo.id === data.id);
-
-      if(!isExist){
-        setRepos(prev => [...prev, data]);
-        setCurrentRepo('')
-        return
-      }
-
-    }
-    alert('Repositório não encontrado')
-
+        if(data.id){
+          const isExist = repos.find(repo => repo.id === data.id);
+          if (!isExist){
+            setRepos(prev => [...prev, data]);
+            setCurrentRepo('');
+          }
+        }
+    })
+    .catch(() => alert('Repositório não encontrado'));
   }
 
   const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-
-    // utilizar filter.
+    const remainingRepos = repos.filter(repo => repo.id !== id);
+    setRepos(remainingRepos);
   }
-
 
   return (
     <Container>
-      <img src={gitLogo} width={72} height={72} alt="github logo"/>
-      <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo}/>
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+        <img src={gitLogo} width={72} height={72} alt="GitHub Logo"/>
+        <Input value={currentRepo} onChange={(event => setCurrentRepo(event.target.value))}/>
+        <Button onCLick={handleSearchRepo} />
+        {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
     </Container>
   );
 }
