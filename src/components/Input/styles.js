@@ -6,15 +6,13 @@ export const InputContainer = styled.div`
     border-radius: 20px;
 
     height: 62px;
-    width: 80%;
-
-    margin: 20px;
-    
+    width: 600px;
+    margin: 10px 0;    
 
     input {
         background: transparent;
         border: 0;
-        width: 90%;
+        width: 560px;
         height: 62px;
         padding: 0 20px;
         color: #FFFFFF;

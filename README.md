@@ -1,3 +1,9 @@
+# Desafio Dio
+## Buscar uma lista de repositórios no Github inserindo o nome do usuário
+
+## Tela exemplo:
+<img src="https://github.com/sdias-code/trilha-react-desafio2-github-wiki/blob/master/src/assets/tela_exemplo.png" alt="Tela exemplo do desafio">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

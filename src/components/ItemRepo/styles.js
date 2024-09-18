@@ -6,17 +6,28 @@ export const ItemContainer = styled.div`
     h3 {
         font-size: 32px;
         color: #FAFAFA;
+        margin-bottom: 10px;
+        font-size: 30px;
     }
 
     p {
-        font-size:16px;
         color: #FAFAFA60;
-        margin-bottom:20px;
+        margin-bottom:30px;
+        font-size: 20px;
+        
     }
 
-    a.remover {
+    a {
+        background-Color: #e3ebdd;
+        padding: 13px 19px;        
+    }        
+
+    button.remover {
         color: #FF0000;
-        margin-top:20px;
+        background-Color: #e3ebdd;
+        margin-top: 30px;
+        padding: 10px 25px;
+        font-size: 20px;
     }
 
     hr {
