@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import gitLogo from '../assets/github.png'
 import Input from '../components/Input';
@@ -37,6 +38,8 @@ function App() {
     console.log('Removendo registro', id);
 
     // utilizar filter.
+    const remainingRepos = repos.filter(repo => repo.id !== id);
+    setRepos(remainingRepos);
   }
 
 
