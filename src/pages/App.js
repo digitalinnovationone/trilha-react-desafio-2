@@ -1,53 +1,50 @@
-
-import { useState } from 'react';
-import gitLogo from '../assets/github.png'
-import Input from '../components/Input';
-import Button from '../components/Button';
-import ItemRepo from '../components/ItemRepo';
-import { api } from '../services/api';
-
+import gitLogo from '../assets/github.png';
+import Button from '../components/button';
+import Input from '../components/input';
+import ItemRepo from '../components/itemRepo';
 import { Container } from './styles';
+import { api } from '../services/api';
+import { useState } from "react";
 
-function App() {
-
-  const [currentRepo, setCurrentRepo] = useState('');
-  const [repos, setRepos] = useState([]);
-
-
-  const handleSearchRepo = async () => {
-
-    const {data} = await api.get(`repos/${currentRepo}`)
-
-    if(data.id){
-
-      const isExist = repos.find(repo => repo.id === data.id);
-
-      if(!isExist){
-        setRepos(prev => [...prev, data]);
-        setCurrentRepo('')
-        return
-      }
-
-    }
-    alert('Repositório não encontrado')
-
-  }
-
-  const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-
-    // utilizar filter.
-  }
+const App = () => {
+    const [repos, setRepos] = useState([]);
+    const [currentRepo, setCurrentRepo] = useState('');
 
 
-  return (
-    <Container>
-      <img src={gitLogo} width={72} height={72} alt="github logo"/>
-      <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo}/>
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
-    </Container>
-  );
-}
+    const handleSearchRepo = async () => {
+        const { data } = await api.get(`repos/${currentRepo}`);
+        console.log("working");
+        if (data.id) {
+            const isExist = repos.find((repo) => repo.id === data.id);
+            console.log("working");
+            if (!isExist) {
+                setRepos((prev) => [...prev, data]);
+                setCurrentRepo('');
+                return;
+            }
+            else{
+                alert('Repositório já adicionado');
+                return;
+            }
+        }
+        alert('Repositório não encontrado');
+    };
+
+    const handleRemoveRepo = (id) => {
+        console.log('Removendo registro', id);
+        const newRepos = repos.filter((repo) => repo.id !== id);
+        setRepos(newRepos);
+        // utilizar filter.
+    };
+
+    return (
+        <Container>
+            <img src={gitLogo} width={72} height={72} alt="Github Octocat logo" />
+            <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)}/>
+            <Button onClick={handleSearchRepo}/>
+            {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+        </Container>
+    );
+};
 
 export default App;

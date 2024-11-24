@@ -15,5 +15,4 @@ export const ButtonContainer = styled.button`
         background-color: #FAFAFA40;
         cursor: pointer;
     }
-
 `
